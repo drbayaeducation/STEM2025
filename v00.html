@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>Dr Baya Education</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { background-color: #f8f9fa; padding: 50px; }
+    .card { margin-top: 20px; }
+  </style>
+</head>
+<body>
+
+  <div class="container text-center">
+    <h1 class="mb-4">Dr Baya Education</h1>
+
+    <div class="mb-3">
+      <input type="text" id="seatInput" class="form-control form-control-lg text-center" placeholder="أدخل رقم الجلوس">
+    </div>
+
+    <div id="result" class="card d-none">
+      <div class="card-body">
+        <h5 class="card-title" id="studentName"></h5>
+        <p class="card-text"><strong>الدرجة:</strong> <span id="studentScore"></span></p>
+        <p class="card-text"><strong>الترتيب:</strong> <span id="studentRank"></span></p>
+        <p class="card-text"><strong>الشعبة:</strong> <span id="studentTrack"></span></p>
+      </div>
+    </div>
+
+    <div id="notFound" class="alert alert-danger mt-3 d-none">رقم الجلوس غير موجود.</div>
+  </div>
+
+  <script>
+    const studentsData = [
+      { seatNumber: "1001", name: "أحمد محمد", score: 98.5, rank: 1, track: "علمي علوم" },
+      { seatNumber: "1002", name: "سارة علي", score: 97.0, rank: 2, track: "علمي رياضة" },
+      { seatNumber: "1003", name: "محمد سمير", score: 94.5, rank: 3, track: "علمي علوم" },
+    ];
+
+    const seatInput = document.getElementById('seatInput');
+    const resultCard = document.getElementById('result');
+    const notFoundAlert = document.getElementById('notFound');
+    const studentName = document.getElementById('studentName');
+    const studentScore = document.getElementById('studentScore');
+    const studentRank = document.getElementById('studentRank');
+    const studentTrack = document.getElementById('studentTrack');
+
+    seatInput.addEventListener('input', function () {
+      const seatNumber = this.value.trim();
+      const student = studentsData.find(s => s.seatNumber === seatNumber);
+
+      if (student) {
+        studentName.textContent = student.name;
+        studentScore.textContent = student.score;
+        studentRank.textContent = student.rank;
+        studentTrack.textContent = student.track;
+
+        resultCard.classList.remove('d-none');
+        notFoundAlert.classList.add('d-none');
+      } else {
+        resultCard.classList.add('d-none');
+        if (seatNumber !== "") {
+          notFoundAlert.classList.remove('d-none');
+        } else {
+          notFoundAlert.classList.add('d-none');
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
