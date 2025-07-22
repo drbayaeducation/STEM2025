@@ -15,7 +15,8 @@ fetch('data.json')
 
     seatInput.addEventListener('input', function () {
       const seatNumber = this.value.trim();
-      const student = studentsData.find(s => s.seatNumber === seatNumber);
+      const student = studentsData.find(s => s.seatNumber === parseInt(seatNumber));
+
 
       if (student) {
         studentName.textContent = student.name;
