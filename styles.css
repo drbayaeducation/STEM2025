@@ -1,0 +1,23 @@
+body {
+  background-image: url('assets/background.jpg');
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  font-family: 'Cairo', sans-serif;
+  direction: rtl;
+}
+
+.logo {
+  width: 120px;
+  height: auto;
+}
+
+.card {
+  margin-top: 20px;
+  background-color: #ffffffcc;
+  border-radius: 15px;
+}
+
+input::placeholder {
+  text-align: center;
+}
